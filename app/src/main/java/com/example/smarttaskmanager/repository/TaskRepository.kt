@@ -1,31 +1,26 @@
 package com.example.smarttaskmanager.repository
 
-import com.example.smarttaskmanager.data.model.Task
 import com.example.smarttaskmanager.data.dao.TaskDao
+import com.example.smarttaskmanager.data.model.Task
 import kotlinx.coroutines.flow.Flow
 
 class TaskRepository(private val taskDao: TaskDao) {
 
-    // ✅ Get all tasks as Flow (auto-updates UI on change)
     val allTasks: Flow<List<Task>> = taskDao.getAllTasks()
 
-    // ✅ Insert new task
-    suspend fun insertTask(task: Task) {
+    suspend fun insert(task: Task) {
         taskDao.insertTask(task)
     }
 
-    // ✅ Update existing task
-    suspend fun updateTask(task: Task) {
+    suspend fun update(task: Task) {
         taskDao.updateTask(task)
     }
 
-    // ✅ Delete single task
-    suspend fun deleteTask(task: Task) {
+    suspend fun delete(task: Task) {
         taskDao.deleteTask(task)
     }
 
-    // ✅ Delete all tasks
-    suspend fun deleteAllTasks() {
+    suspend fun deleteAll() {
         taskDao.deleteAllTasks()
     }
 }
